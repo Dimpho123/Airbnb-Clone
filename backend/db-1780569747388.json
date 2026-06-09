@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Dimpho Lebotsa",
+      "email": "Dimpho@123.com",
+      "phone": "1-770-736-8031"
+    },
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "email": "shanna@melisa.tv",
+      "phone": "010-779-4576"
+    },
+    {
+      "email": "oliver@mail.com",
+      "password": "$2a$10$3MIus7D/6VS2q.XIEbzPh.AVclRz8KWlaeqzUlv0FDkJ4GQwajvdG",
+      "id": 3
+    },
+    {
+      "email": "patient@mail.com",
+      "password": "$2a$10$FWqNme6OpqK/Is/Kd3Q9Puem6nKSdQsBzcgcEqYb93xcvglRZKDIa",
+      "id": 4
+    },
+    {
+      "email": "damer@mail.com",
+      "password": "$2a$10$Eamze.nuBFWC273spcJUF.nkvfXFX6w.X2/h2a0CQWGCV2rIzIaHS",
+      "id": 5
+    },
+    {
+      "email": "dar@mail.com",
+      "password": "$2a$10$v4qutgaOumMquikYAdaX3e3yzs8OfSgoZDaUH4nJlhHhnbKupaH/q",
+      "id": 6
+    }
+  ],
+  "bookings": [
+    {
+      "listingId": 1,
+      "startDate": "2022-02-20",
+      "endDate": "2022-02-21",
+      "userId": 1
+    }
+  ],
+  "listings": [
+    {
+      "id": 1,
+      "bath_num": 3,
+      "bed_num": 4,
+      "zip": 23456,
+      "address": "Sholum street",
+      "city": "Pretoria",
+      "street": "Madiba",
+      "price": 2000,
+      "sq_fit": 4.2,
+      "email": "test@test.com",
+      "userId": 2
+    }
+  ]
+}
