@@ -31,6 +31,22 @@
       "email": "dar@mail.com",
       "password": "$2a$10$v4qutgaOumMquikYAdaX3e3yzs8OfSgoZDaUH4nJlhHhnbKupaH/q",
       "id": 6
+    },
+    {
+      "email": "Dimpho@gmail.com",
+      "password": "$2a$10$84oru0tX5E03KXjnny4OwezYxzQ073JoONoWJRBkBCCaqUYWNWR1O",
+      "id": 7
+    },
+    {
+      "email": "Princess@gmail.com",
+      "password": "$2a$10$pKSRxinPDnG0z854O5Z6we87SEg3cAmOfRoT1Wxg0EJoksLu5GrCy",
+      "id": 8
+    },
+    {
+      "email": "Monene@gmail.com",
+      "password": "$2a$10$Y5vfqHoEqDa9RVvw6fy5.OY.DpXk3KZOOebKpApSUoMktUiArUDyq",
+      "name": "Monene",
+      "id": 9
     }
   ],
   "bookings": [
@@ -39,15 +55,14 @@
       "startDate": "2022-02-20",
       "endDate": "2022-02-21",
       "userId": 1
-     
     }
   ],
   "listings": [
     {
       "id": 1,
       "img": "https://a0.muscache.com/im/pictures/Mt/MtTemplate-1972437/original/ee156e07-9256-46c2-aa3e-33f39e6bfdc9.jpeg?im_w=480",
-      "title":"Online Experiences",
-      "description":"Unique activities we can do together, led by a world of hosts",
+      "title": "Online Experiences",
+      "description": "Unique activities we can do together, led by a world of hosts",
       "bath_num": 3,
       "bed_num": 4,
       "zip": 23456,
@@ -62,8 +77,8 @@
     {
       "id": 2,
       "img": "https://cf.bstatic.com/xdata/images/hotel/square240/820676752.webp?k=48b4bfd92a6183bd3ce73795a601d6a629fd3e628987385d81d8160d87c76ac5&o=",
-      "title":"Penthouse in London",
-      "description":"Enjoy the amazing sights of London with this stunning penthouse",
+      "title": "Penthouse in London",
+      "description": "Enjoy the amazing sights of London with this stunning penthouse",
       "bath_num": 3,
       "bed_num": 4,
       "zip": 23456,

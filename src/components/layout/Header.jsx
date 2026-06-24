@@ -6,7 +6,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Avatar } from '@mui/material';
 import './Header.css'
 import { openModal } from '../../actions/modalAction';
-import Login from '../Login';
+//import Login from '../Login';
+import { logout } from '../../actions/userActions';
 
 
 const Header = () => {
@@ -18,6 +19,15 @@ const Header = () => {
   const openModalHandle = () => {
    dispatch(openModal("open", "login"))
   };
+  const openRegisterModal = () => {
+  dispatch(openModal("open", "register"));
+};
+  const logoutHandler = () => {
+  dispatch(logout());
+};
+
+
+
   return (
     <div className='header'>
       <img
@@ -37,17 +47,28 @@ const Header = () => {
         <div className="dropdown">
         <ExpandMoreIcon className='dropbtn' />
         <div className='dropdown-content'>
-          {userInfo ? (
-          <>
-          <span>Account</span>
-          <span>Log out</span>
-          </> 
-         ) : ( 
-         <>
-          <span>Sign up</span>
-           <span onClick={openModalHandle}>Log in</span>
-          </>
-          )}
+         {userInfo ? (
+  <>
+    <span>
+      Welcome, {userInfo?.user?.name || userInfo?.name}
+    </span>
+
+    <span onClick={logoutHandler}>
+      Log out
+    </span>
+  </>
+) : (
+  <>
+    <span onClick={openRegisterModal}>
+      Sign up
+    </span>
+
+    <span onClick={openModalHandle}>
+      Log in
+    </span>
+  </>
+)}
+        
            <span>Help</span>
         </div>
         </div>

@@ -28,16 +28,17 @@ const Home = () => {
       <div className='home_section'>
        {listings.map((listing) => (
             <Card
-              key={listing.id}
-              src={listing.img}
-              title={listing.title}
-              description={listing.description}
-              price={listing.price}
-            />
+  key={listing.id}
+  id={listing.id}
+  src={listing.img}
+  title={listing.title}
+  description={listing.description}
+  price={listing.price}
+/>
           ))}
       </div>
        )}
-      {/*  Cards 
+      Cards 
       <div className='home_section'>
         <Card
           src="https://a0.muscache.com/im/pictures/Mt/MtTemplate-1972437/original/ee156e07-9256-46c2-aa3e-33f39e6bfdc9.jpeg?im_w=480"
@@ -80,7 +81,7 @@ const Home = () => {
           price="R1800/night"
         />
       </div>
-      */}
+      
     </div>
     
   );

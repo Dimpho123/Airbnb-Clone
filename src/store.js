@@ -3,12 +3,16 @@ import  { thunk }  from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import { listingListReducer } from './reducers/listingReducers';
 import { modalReducer } from './reducers/modalReducer'
-import { userLoginreducer } from './reducers/userReducer'
+import {
+  userLoginreducer,
+  userRegisterReducer
+} from './reducers/userReducer';
 
 const reducer = combineReducers({ 
     listingList: listingListReducer, 
     modal: modalReducer, 
 userLogin: userLoginreducer, 
+ userRegister: userRegisterReducer,
 });
 
 const userInfoFromLS = localStorage.getItem("userInfo")

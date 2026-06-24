@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../actions/modalAction';
 import './Modal.css';
 import Login from './Login';
+import Register from './Register';
 
 const Modal = () => {
   const dispatch = useDispatch()
@@ -30,8 +31,9 @@ const Modal = () => {
             &times;
            </span>
         </div>
-        <div>
-     {content === "login" && <Login />}
+    <div>
+  {content === "login" && <Login />}
+  {content === "register" && <Register />}
 </div>
         </div>
       </div>
