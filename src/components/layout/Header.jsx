@@ -10,6 +10,7 @@ import { openModal } from '../../actions/modalAction';
 import { logout } from '../../actions/userActions';
 
 
+
 const Header = () => {
   const dispatch = useDispatch();
 
@@ -36,9 +37,29 @@ const Header = () => {
         alt="logo"
       />
 
-      <div className="header_center">
-        <input type="text" />
-        <SearchIcon />
+      {/* Search Bar */}
+      <div className="home_search">
+        <div className="search_box">
+          <div>
+            <h4>Where</h4>
+            <p>Search destinations</p>
+          </div>
+
+          <div>
+            <h4>When</h4>
+            <p>Add dates</p>
+          </div>
+
+
+          <div>
+            <h4>Guests</h4>
+            <p>Add guests</p>
+          </div>
+
+          <button className="search_btn">
+            <SearchIcon />
+          </button>
+        </div>
       </div>
 
       <div className="header_right">

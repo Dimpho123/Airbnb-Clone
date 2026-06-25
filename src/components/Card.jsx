@@ -1,4 +1,5 @@
 import React from "react";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useHistory } from "react-router-dom";
 import "./Card.css";
 
@@ -6,26 +7,34 @@ const Card = ({
   id,
   src,
   title,
-  description,
-  price
+  city,
+  price,
+  rating
 }) => {
+
   const history = useHistory();
 
   return (
     <div
       className="card"
-      onClick={() =>
-        history.push(`/listing/${id}`)
-      }
+      onClick={() => history.push(`/listing/${id}`)}
     >
       <img src={src} alt={title} />
 
+      <FavoriteBorderIcon className="heart" />
+
       <div className="card_info">
-        <h2>{title}</h2>
+        <h4>{city}</h4>
 
-        <p>{description}</p>
+        <p>{title}</p>
 
-        <h3>R{price}/night</h3>
+        <div className="card_bottom">
+          <span>⭐ {rating}</span>
+
+          <span>
+            <strong>R{price}</strong>/night
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,25 @@
+.home {
+  background: #fff;
+  min-height: 100vh;
+}
+
+
+
+/* Section */
+
+.location_section {
+  padding: 20px 40px;
+}
+
+.location_section h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+/* Cards Grid */
+
 .home_section {
-    display: flex;
-    padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
 }
