@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { openModal } from '../actions/modalAction';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+// "./ListingScreen.css";
 
 const ListingScreen = () => {
   const { id } = useParams();

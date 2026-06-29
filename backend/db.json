@@ -58,37 +58,49 @@
     }
   ],
   "listings": [
-    {
-      "id": 1,
-      "img": "https://a0.muscache.com/im/pictures/Mt/MtTemplate-1972437/original/ee156e07-9256-46c2-aa3e-33f39e6bfdc9.jpeg?im_w=480",
-      "title": "Online Experiences",
-      "description": "Unique activities we can do together, led by a world of hosts",
-      "bath_num": 3,
-      "bed_num": 4,
-      "zip": 23456,
-      "address": "Sholum street",
-      "city": "Pretoria",
-      "street": "Madiba",
-      "price": 2000,
-      "sq_fit": 4.2,
-      "email": "test@test.com",
-      "userId": 2
-    },
-    {
-      "id": 2,
-      "img": "https://cf.bstatic.com/xdata/images/hotel/square240/820676752.webp?k=48b4bfd92a6183bd3ce73795a601d6a629fd3e628987385d81d8160d87c76ac5&o=",
-      "title": "Penthouse in London",
-      "description": "Enjoy the amazing sights of London with this stunning penthouse",
-      "bath_num": 3,
-      "bed_num": 4,
-      "zip": 23456,
-      "address": "Sholum street",
-      "city": "Pretoria",
-      "street": "Madiba",
-      "price": 2000,
-      "sq_fit": 4.2,
-      "email": "test@test.com",
-      "userId": 2
-    }
-  ]
+  {
+    "id": 1,
+    "img": "https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e",
+    "title": "Luxury Apartment in Cape Town",
+    "description": "Beautiful apartment overlooking Table Mountain",
+    "city": "Cape Town",
+    "street": "Long Street",
+    "price": 2500,
+    "bed_num": 2,
+    "bath_num": 2
+  },
+  {
+    "id": 2,
+    "img": "https://images.unsplash.com/photo-1542051841857-5f90071e7989",
+    "title": "Tokyo City Loft",
+    "description": "Modern loft in the heart of Tokyo",
+    "city": "Tokyo",
+    "street": "Shibuya",
+    "price": 3200,
+    "bed_num": 3,
+    "bath_num": 2
+  },
+  {
+    "id": 3,
+    "img": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
+    "title": "London Penthouse",
+    "description": "Luxury penthouse with skyline views",
+    "city": "London",
+    "street": "Oxford Street",
+    "price": 5000,
+    "bed_num": 4,
+    "bath_num": 3
+  },
+  {
+    "id": 4,
+    "img": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
+    "title": "New York Loft",
+    "description": "Stylish loft in Manhattan",
+    "city": "New York",
+    "street": "5th Avenue",
+    "price": 4500,
+    "bed_num": 3,
+    "bath_num": 2
+  }
+]
 }
