@@ -1,0 +1,27 @@
+.guest-counter{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+}
+
+.guest-buttons{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.guest-buttons button{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:1px solid #ddd;
+    background:white;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.guest-buttons button:hover{
+    background:#f7f7f7;
+}

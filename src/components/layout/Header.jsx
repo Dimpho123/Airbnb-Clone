@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import {useDispatch, useSelector} from 'react-redux'
 import SearchIcon from '@mui/icons-material/Search';
 import LanguageIcon from '@mui/icons-material/Language';
@@ -6,14 +9,38 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Avatar } from '@mui/material';
 import './Header.css'
 import { openModal } from '../../actions/modalAction';
-//import Login from '../Login';
 import { logout } from '../../actions/userActions';
+import GuestCounter from "../GuestCounter";
+import { useEffect } from "react";
+import { listListing } from "../../actions/listingActions";
 
 
 
 const Header = () => {
   const dispatch = useDispatch();
+const history = useHistory();
 
+const [location, setLocation] = useState("");
+
+const [checkIn, setCheckIn] = useState(null);
+const [checkOut, setCheckOut] = useState(null);
+
+const [adults, setAdults] = useState(1);
+const [children, setChildren] = useState(0);
+const [infants, setInfants] = useState(0);
+const [pets, setPets] = useState(0);
+
+const [showLocation, setShowLocation] = useState(false);
+const [showCalendar, setShowCalendar] = useState(false);
+const [showGuests, setShowGuests] = useState(false);
+useEffect(() => {
+  dispatch(listListing());
+}, [dispatch]);
+const searchHandler = () => {
+  history.push(
+    `/search?location=${location}&checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}&infants=${infants}&pets=${pets}`
+  );
+};
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo} = userLogin
 
@@ -26,7 +53,11 @@ const Header = () => {
   const logoutHandler = () => {
   dispatch(logout());
 };
+const listingList = useSelector(state => state.listingList);
 
+const { listings = [] } = listingList;
+
+const cities = [...new Set(listings.map(item => item.city))];
 
 
   return (
@@ -39,28 +70,163 @@ const Header = () => {
 
       {/* Search Bar */}
       <div className="home_search">
-        <div className="search_box">
-          <div>
-            <h4>Where</h4>
-            <p>Search destinations</p>
-          </div>
+  <div className="search_box">
 
-          <div>
-            <h4>When</h4>
-            <p>Add dates</p>
-          </div>
+    {/* WHERE */}
+    <div className="search-item">
 
+    <h4>Where</h4>
 
-          <div>
-            <h4>Guests</h4>
-            <p>Add guests</p>
-          </div>
+    <p
+        onClick={() => setShowLocation(!showLocation)}
+    >
+        {location || "Search destinations"}
+    </p>
 
-          <button className="search_btn">
-            <SearchIcon />
-          </button>
+    {showLocation && (
+
+        <div
+            className="popup"
+            onClick={(e) => e.stopPropagation()}
+        >
+
+            {cities.map(city => (
+
+                <div
+                    key={city}
+                    className="popup-item"
+                    onClick={() => {
+                        setLocation(city);
+                        setShowLocation(false);
+                    }}
+                >
+
+                     {city}
+
+                </div>
+
+            ))}
+
         </div>
-      </div>
+
+    )}
+
+</div>
+
+    {/* WHEN */}
+   <div className="search-item">
+
+    <h4>When</h4>
+
+    <p
+        onClick={() =>
+            setShowCalendar(true)
+        }
+    >
+        {checkIn && checkOut
+
+            ? `${checkIn.toLocaleDateString()} - ${checkOut.toLocaleDateString()}`
+
+            : "Add dates"}
+
+    </p>
+
+    {showCalendar && (
+
+        <div
+            className="popup"
+            onClick={(e) => e.stopPropagation()}
+        >
+
+            <DatePicker
+                inline
+                selectsRange
+                startDate={checkIn}
+                endDate={checkOut}
+                onChange={(dates) => {
+
+                    const [start, end] = dates;
+
+                    setCheckIn(start);
+
+                    setCheckOut(end);
+
+                    if (start && end) {
+
+                        setShowCalendar(false);
+
+                    }
+
+                }}
+            />
+
+        </div>
+
+    )}
+
+</div>
+
+    {/* GUESTS */}
+    <div
+  className="search-item"
+  onClick={() => {
+    setShowGuests(!showGuests);
+    setShowCalendar(false);
+    setShowLocation(false);
+  }}
+>
+  <h4>Guests</h4>
+
+  <p>
+    {adults + children === 1
+      ? "1 guest"
+      : `${adults + children} guests`}
+    {pets > 0 && ` • ${pets} pet${pets > 1 ? "s" : ""}`}
+  </p>
+
+  {showGuests && (
+    <div
+  className="popup"
+  onClick={(e) => e.stopPropagation()}
+>
+
+      <GuestCounter
+        label="Adults"
+        value={adults}
+        setValue={setAdults}
+        min={1}
+      />
+
+      <GuestCounter
+        label="Children"
+        value={children}
+        setValue={setChildren}
+      />
+
+      <GuestCounter
+        label="Infants"
+        value={infants}
+        setValue={setInfants}
+      />
+
+      <GuestCounter
+        label="Pets"
+        value={pets}
+        setValue={setPets}
+      />
+
+    </div>
+  )}
+</div>
+ <button
+      className="search_btn"
+      onClick={searchHandler}
+    >
+      <SearchIcon />
+    </button>
+
+  </div>
+</div>
 
       <div className="header_right">
         <p>Become a host</p>
