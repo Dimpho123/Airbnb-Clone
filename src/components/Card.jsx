@@ -1,6 +1,7 @@
 import React from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useHistory } from "react-router-dom";
+import StarIcon from "@mui/icons-material/Star";
 import "./Card.css";
 
 const Card = ({
@@ -29,7 +30,10 @@ const Card = ({
         <p>{title}</p>
 
         <div className="card_bottom">
-          <span>⭐ {rating}</span>
+          <span className="rating">
+  <StarIcon className="rating_icon" />
+  {rating}
+</span>
 
           <span>
             <strong>R{price}</strong>/night

@@ -1,269 +1,366 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import {useDispatch, useSelector} from 'react-redux'
-import SearchIcon from '@mui/icons-material/Search';
-import LanguageIcon from '@mui/icons-material/Language';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Avatar } from '@mui/material';
-import './Header.css'
-import { openModal } from '../../actions/modalAction';
-import { logout } from '../../actions/userActions';
-import GuestCounter from "../GuestCounter";
-import { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useHistory } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import SearchIcon from "@mui/icons-material/Search";
+import LanguageIcon from "@mui/icons-material/Language";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Avatar } from "@mui/material";
+
+import "./Header.css";
+
+import { openModal } from "../../actions/modalAction";
+import { logout } from "../../actions/userActions";
 import { listListing } from "../../actions/listingActions";
-
-
+import GuestCounter from "../GuestCounter";
 
 const Header = () => {
   const dispatch = useDispatch();
-const history = useHistory();
+  const history = useHistory();
 
-const [location, setLocation] = useState("");
+  // Search
+  const [location, setLocation] = useState("");
 
-const [checkIn, setCheckIn] = useState(null);
-const [checkOut, setCheckOut] = useState(null);
+  const [checkIn, setCheckIn] = useState(null);
+  const [checkOut, setCheckOut] = useState(null);
 
-const [adults, setAdults] = useState(1);
-const [children, setChildren] = useState(0);
-const [infants, setInfants] = useState(0);
-const [pets, setPets] = useState(0);
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [infants, setInfants] = useState(0);
+  const [pets, setPets] = useState(0);
 
-const [showLocation, setShowLocation] = useState(false);
-const [showCalendar, setShowCalendar] = useState(false);
-const [showGuests, setShowGuests] = useState(false);
-useEffect(() => {
-  dispatch(listListing());
-}, [dispatch]);
-const searchHandler = () => {
-  history.push(
-    `/search?location=${location}&checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}&infants=${infants}&pets=${pets}`
-  );
-};
-  const userLogin = useSelector(state => state.userLogin)
-  const {userInfo} = userLogin
+  // Popups
+  const [showLocation, setShowLocation] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [showGuests, setShowGuests] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+
+  // Refs
+  const locationRef = useRef(null);
+  const calendarRef = useRef(null);
+  const guestRef = useRef(null);
+  const menuRef = useRef(null);
+
+  // Redux
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const listingList = useSelector((state) => state.listingList);
+  const { listings = [] } = listingList;
+
+  const cities = [...new Set(listings.map((item) => item.city))];
+
+  useEffect(() => {
+    dispatch(listListing());
+  }, [dispatch]);
+
+  // Close popups when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        locationRef.current &&
+        !locationRef.current.contains(e.target)
+      ) {
+        setShowLocation(false);
+      }
+
+      if (
+        calendarRef.current &&
+        !calendarRef.current.contains(e.target)
+      ) {
+        setShowCalendar(false);
+      }
+
+      if (
+        guestRef.current &&
+        !guestRef.current.contains(e.target)
+      ) {
+        setShowGuests(false);
+      }
+
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target)
+      ) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener(
+      "mousedown",
+      handleClickOutside
+    );
+
+    return () =>
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside
+      );
+  }, []);
 
   const openModalHandle = () => {
-   dispatch(openModal("open", "login"))
+    dispatch(openModal("open", "login"));
   };
+
   const openRegisterModal = () => {
-  dispatch(openModal("open", "register"));
-};
+    dispatch(openModal("open", "register"));
+  };
+
   const logoutHandler = () => {
-  dispatch(logout());
-};
-const listingList = useSelector(state => state.listingList);
+    dispatch(logout());
+  };
 
-const { listings = [] } = listingList;
-
-const cities = [...new Set(listings.map(item => item.city))];
-
+  const searchHandler = () => {
+    history.push(
+      `/search?location=${location}&checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}&infants=${infants}&pets=${pets}`
+    );
+  };
 
   return (
-    <div className='header'>
-      <img
-        src="https://s.yimg.com/zb/imgv1/26347c9d-9458-3369-b5a8-d946c1771358/t_500x300"
-        className="header_logo"
-        alt="logo"
-      />
+    <div className="header">
 
-      {/* Search Bar */}
-      <div className="home_search">
-  <div className="search_box">
+  {/* LOGO */}
 
-    {/* WHERE */}
-    <div className="search-item">
+  <img
+    src="https://s.yimg.com/zb/imgv1/26347c9d-9458-3369-b5a8-d946c1771358/t_500x300"
+    alt="Airbnb"
+    className="header_logo"
+    onClick={() => history.push("/")}
+  />
 
-    <h4>Where</h4>
+  {/* SEARCH */}
 
-    <p
-        onClick={() => setShowLocation(!showLocation)}
-    >
-        {location || "Search destinations"}
-    </p>
+  <div className="home_search">
 
-    {showLocation && (
+    <div className="search_box">
 
-        <div
-            className="popup"
-            onClick={(e) => e.stopPropagation()}
-        >
+      {/* WHERE */}
 
-            {cities.map(city => (
+      <div
+        className="search-item"
+        ref={locationRef}
+        onClick={() => {
+          setShowLocation(true);
+          setShowCalendar(false);
+          setShowGuests(false);
+        }}
+      >
 
-                <div
-                    key={city}
-                    className="popup-item"
-                    onClick={() => {
-                        setLocation(city);
-                        setShowLocation(false);
-                    }}
-                >
+        <h4>Where</h4>
 
-                     {city}
+        <p>
+          {location || "Search destinations"}
+        </p>
 
-                </div>
+        {showLocation && (
+
+          <div className="popup">
+
+            {cities.map((city) => (
+
+              <div
+                key={city}
+                className="popup-item"
+                onClick={() => {
+                  setLocation(city);
+                  setShowLocation(false);
+                }}
+              >
+
+                📍 {city}
+
+              </div>
 
             ))}
 
-        </div>
+          </div>
 
-    )}
+        )}
 
-</div>
+      </div>
 
-    {/* WHEN */}
-   <div className="search-item">
+      {/* WHEN */}
 
-    <h4>When</h4>
+      <div
+        className="search-item"
+        ref={calendarRef}
+        onClick={() => {
+          setShowCalendar(true);
+          setShowLocation(false);
+          setShowGuests(false);
+        }}
+      >
 
-    <p
-        onClick={() =>
-            setShowCalendar(true)
-        }
-    >
-        {checkIn && checkOut
+        <h4>When</h4>
 
+        <p>
+
+          {checkIn && checkOut
             ? `${checkIn.toLocaleDateString()} - ${checkOut.toLocaleDateString()}`
-
             : "Add dates"}
 
-    </p>
+        </p>
 
-    {showCalendar && (
+        {showCalendar && (
 
-        <div
-            className="popup"
-            onClick={(e) => e.stopPropagation()}
-        >
+          <div className="popup">
 
             <DatePicker
-                inline
-                selectsRange
-                startDate={checkIn}
-                endDate={checkOut}
-                onChange={(dates) => {
+              inline
+              selectsRange
+              startDate={checkIn}
+              endDate={checkOut}
+              onChange={(dates) => {
+                const [start, end] = dates;
 
-                    const [start, end] = dates;
+                setCheckIn(start);
+                setCheckOut(end);
 
-                    setCheckIn(start);
-
-                    setCheckOut(end);
-
-                    if (start && end) {
-
-                        setShowCalendar(false);
-
-                    }
-
-                }}
+                if (start && end) {
+                  setTimeout(() => {
+                    setShowCalendar(false);
+                  }, 300);
+                }
+              }}
             />
 
-        </div>
+          </div>
 
-    )}
+        )}
 
-</div>
+      </div>
 
-    {/* GUESTS */}
-    <div
-  className="search-item"
-  onClick={() => {
-    setShowGuests(!showGuests);
-    setShowCalendar(false);
-    setShowLocation(false);
-  }}
->
-  <h4>Guests</h4>
+      {/* GUESTS */}
 
-  <p>
-    {adults + children === 1
-      ? "1 guest"
-      : `${adults + children} guests`}
-    {pets > 0 && ` • ${pets} pet${pets > 1 ? "s" : ""}`}
-  </p>
+      <div
+        className="search-item"
+        ref={guestRef}
+        onClick={() => {
+          setShowGuests(true);
+          setShowCalendar(false);
+          setShowLocation(false);
+        }}
+      >
 
-  {showGuests && (
-    <div
-  className="popup"
-  onClick={(e) => e.stopPropagation()}
->
+        <h4>Guests</h4>
 
-      <GuestCounter
-        label="Adults"
-        value={adults}
-        setValue={setAdults}
-        min={1}
-      />
+        <p>
 
-      <GuestCounter
-        label="Children"
-        value={children}
-        setValue={setChildren}
-      />
+          {adults + children} Guest
+          {adults + children > 1 ? "s" : ""}
 
-      <GuestCounter
-        label="Infants"
-        value={infants}
-        setValue={setInfants}
-      />
+          {pets > 0 &&
+            ` • ${pets} Pet${pets > 1 ? "s" : ""}`}
 
-      <GuestCounter
-        label="Pets"
-        value={pets}
-        setValue={setPets}
-      />
+        </p>
+
+        {showGuests && (
+
+          <div className="popup guest-popup">
+
+            <GuestCounter
+              label="Adults"
+              value={adults}
+              setValue={setAdults}
+              min={1}
+            />
+
+            <GuestCounter
+              label="Children"
+              value={children}
+              setValue={setChildren}
+            />
+
+            <GuestCounter
+              label="Infants"
+              value={infants}
+              setValue={setInfants}
+            />
+
+            <GuestCounter
+              label="Pets"
+              value={pets}
+              setValue={setPets}
+            />
+
+          </div>
+
+        )}
+
+      </div>
+
+      {/* SEARCH BUTTON */}
+
+      <button
+        className="search_btn"
+        onClick={searchHandler}
+      >
+
+        <SearchIcon />
+
+      </button>
+
+    </div>
+
+  </div>
+
+  {/* RIGHT SIDE */}
+
+  <div className="header_right">
+
+    <p>Become a host</p>
+
+    <LanguageIcon />
+
+    <div className="dropdown">
+
+  <div
+    className="dropdown-toggle"
+    onClick={() => setShowMenu(!showMenu)}
+  >
+    <ExpandMoreIcon className="dropbtn" />
+    <Avatar />
+  </div>
+
+  {showMenu && (
+    <div className="dropdown-content">
+
+      {userInfo ? (
+        <>
+          <span>
+            Welcome, {userInfo?.user?.name || userInfo?.name}
+          </span>
+
+          <span onClick={logoutHandler}>
+            Log out
+          </span>
+        </>
+      ) : (
+        <>
+          <span onClick={openRegisterModal}>
+            Sign up
+          </span>
+
+          <span onClick={openModalHandle}>
+            Log in
+          </span>
+        </>
+      )}
+
+      <span>Help</span>
 
     </div>
   )}
-</div>
- <button
-      className="search_btn"
-      onClick={searchHandler}
-    >
-      <SearchIcon />
-    </button>
 
-  </div>
 </div>
 
-      <div className="header_right">
-        <p>Become a host</p>
-        <LanguageIcon />
-        <div className="dropdown">
-        <ExpandMoreIcon className='dropbtn' />
-        <div className='dropdown-content'>
-         {userInfo ? (
-  <>
-    <span>
-      Welcome, {userInfo?.user?.name || userInfo?.name}
-    </span>
+</div>
 
-    <span onClick={logoutHandler}>
-      Log out
-    </span>
-  </>
-) : (
-  <>
-    <span onClick={openRegisterModal}>
-      Sign up
-    </span>
-
-    <span onClick={openModalHandle}>
-      Log in
-    </span>
-  </>
-)}
-        
-           <span>Help</span>
-        </div>
-        </div>
-       <Avatar />
-      </div>
-    </div>
-  );
+</div>
+);
 };
-  
 
-export default Header
+export default Header;

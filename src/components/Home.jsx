@@ -51,42 +51,42 @@ const Home = () => {
 
           <Card
             id={101}
-            src="https://cf.bstatic.com/xdata/images/hotel/square240/311542428.webp?k=477faef3e0d6ea290a0b44a8456421990b3878554240aa6a40c0c14aa764f9f7&o="
+            src="https://www.yebosouthafrica.com/wp-content/uploads/2021/06/va-waterfront-1536x614.jpg"
             title="Cape Town"
             description="Table Mountain, beaches and luxury stays."
-            price="3500"
+            price="850"
           />
 
           <Card
             id={102}
-            src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf"
+            src="https://cdn.getyourguide.com/image/format=auto,fit=cover,gravity=auto,quality=60,width=270,height=180,dpr=1/tour_img/a6b70c8873fbed711b6eff247067b64e2e044569b6c9f18390c44e679bd6fc40.jpg"
             title="Tokyo"
-            description="Experience Japan's modern culture."
-            price="4200"
+            description="Fast & Furious Tokyo Drift."
+            price="850"
           />
 
           <Card
             id={103}
-            src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad"
-            title="London"
-            description="Luxury apartments in the city center."
-            price="5000"
+            src="https://cdn.getyourguide.com/image/format=auto,fit=cover,gravity=auto,quality=60,width=270,height=180,dpr=1/tour_img/721ff2769c89e6227d9f5aadc909172f08e5c2643baf1c7ed348e5b66e6bde6c.jpg"
+            title="Tokyo"
+            description="Shinjuku Sumo Show & experience."
+            price="400/per person"
           />
 
           <Card
             id={104}
-            src="https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2"
+            src="https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,height=440,dpr=1/tour_img/5f7b651435b28.jpeg"
             title="New York"
-            description="Amazing skyline and city experiences."
-            price="6500"
+            description="NYC Statue City Cruises: Official Statue Of Liberty."
+            price="R900/per person"
           />
 
           <Card
             id={105}
-            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
-            title="Maldives"
-            description="Private villas and ocean views."
-            price="12000"
+            src="https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,height=440,dpr=1/tour_img/5d417f825b714.jpeg"
+            title="North West"
+            description="Predator Safari with a Guide."
+            price="530/per person"
           />
 
         </div>

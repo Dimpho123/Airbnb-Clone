@@ -47,6 +47,12 @@
       "password": "$2a$10$Y5vfqHoEqDa9RVvw6fy5.OY.DpXk3KZOOebKpApSUoMktUiArUDyq",
       "name": "Monene",
       "id": 9
+    },
+    {
+      "email": "dee@gmail.com",
+      "password": "$2a$10$CgRMomDYKjHB4INdWMC85uyXtQF17PjRHFq1/6kbUFr2F4vghoaSi",
+      "name": "Dimpho",
+      "id": 10
     }
   ],
   "bookings": [
@@ -58,49 +64,60 @@
     }
   ],
   "listings": [
-  {
-    "id": 1,
-    "img": "https://cf.bstatic.com/xdata/images/hotel/square240/311542428.webp?k=477faef3e0d6ea290a0b44a8456421990b3878554240aa6a40c0c14aa764f9f7&o=",
-    "title": "Luxury Apartment in Cape Town",
-    "description": "Beautiful apartment overlooking Table Mountain",
-    "city": "Cape Town",
-    "street": "Long Street",
-    "price": 2500,
-    "bed_num": 2,
-    "bath_num": 2
-  },
-  {
-    "id": 2,
-    "img": "https://images.unsplash.com/photo-1542051841857-5f90071e7989",
-    "title": "Tokyo City Loft",
-    "description": "Modern loft in the heart of Tokyo",
-    "city": "Tokyo",
-    "street": "Shibuya",
-    "price": 3200,
-    "bed_num": 3,
-    "bath_num": 2
-  },
-  {
-    "id": 3,
-    "img": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
-    "title": "London Penthouse",
-    "description": "Luxury penthouse with skyline views",
-    "city": "London",
-    "street": "Oxford Street",
-    "price": 5000,
-    "bed_num": 4,
-    "bath_num": 3
-  },
-  {
-    "id": 4,
-    "img": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
-    "title": "New York Loft",
-    "description": "Stylish loft in Manhattan",
-    "city": "New York",
-    "street": "5th Avenue",
-    "price": 4500,
-    "bed_num": 3,
-    "bath_num": 2
-  }
-]
+    {
+      "id": 1,
+      "img": "https://cf.bstatic.com/xdata/images/hotel/square240/311542428.webp?k=477faef3e0d6ea290a0b44a8456421990b3878554240aa6a40c0c14aa764f9f7&o=",
+      "title": "Luxury Apartment in Cape Town",
+      "description": "Beautiful apartment overlooking Table Mountain",
+      "city": "Cape Town",
+      "street": "Long Street",
+      "price": 2500,
+      "bed_num": 2,
+      "bath_num": 2
+    },
+    {
+      "id": 2,
+      "img": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/551412862.jpg?k=c41e029743b1cf694341543eee8cd98e41aa906f1cbf71dddf3782bb79ddc38c&o=",
+      "title": "Tokyo City Loft",
+      "description": "Modern loft in the heart of Tokyo",
+      "city": "Tokyo",
+      "street": "Shibuya",
+      "price": 3200,
+      "bed_num": 3,
+      "bath_num": 2
+    },
+    {
+      "id": 3,
+      "img": "https://www.jamesedition.com/stories/wp-content/uploads/2025/01/New-Global-Record-hero.webp",
+      "title": "London Penthouse",
+      "description": "Luxury penthouse with skyline views",
+      "city": "London",
+      "street": "Oxford Street",
+      "price": 5000,
+      "bed_num": 4,
+      "bath_num": 3
+    },
+    {
+      "id": 4,
+      "img": "https://www.freshpalace.com/wp-content/themes/FreshPalace/scripts/timthumb.php?src=https://www.freshpalace.com/wp-content/uploads/2022/07/Pool-terrace-large-windows.jpg&q=90&zc=1&w=300&h=250",
+      "title": "New York Loft",
+      "description": "Stylish loft in Manhattan",
+      "city": "New York",
+      "street": "5th Avenue",
+      "price": 4500,
+      "bed_num": 3,
+      "bath_num": 2
+    },
+    {
+      "id": 5,
+      "img": "https://cf.bstatic.com/xdata/images/hotel/square240/529114725.webp?k=2ba9ce03581dc29918792aa4f97914be9c47bda8bde52add37cea324945c9d03&o=",
+      "title": "Atlantic Oasis Guest House",
+      "description": "Atlantic Oasis Guest House in Table View provides adults-only accommodation with an outdoor swimming pool and barbecue facilities",
+      "city": "Cape Town",
+      "street": "Khai Street",
+      "price": 3500,
+      "bed_num": 3,
+      "bath_num": 2
+    }
+  ]
 }

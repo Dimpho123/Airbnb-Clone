@@ -33,3 +33,16 @@
   position: absolute;
   color: white;
 }
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+.rating_icon {
+  color: gray;
+  font-size: 18px !important;
+}
