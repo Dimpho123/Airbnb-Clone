@@ -51,7 +51,7 @@ const Home = () => {
 
           <Card
             id={101}
-            src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99"
+            src="https://cf.bstatic.com/xdata/images/hotel/square240/311542428.webp?k=477faef3e0d6ea290a0b44a8456421990b3878554240aa6a40c0c14aa764f9f7&o="
             title="Cape Town"
             description="Table Mountain, beaches and luxury stays."
             price="3500"
