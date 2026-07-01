@@ -1,6 +1,6 @@
 import React from "react";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useHistory } from "react-router-dom";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import StarIcon from "@mui/icons-material/Star";
 import "./Card.css";
 
@@ -10,9 +10,8 @@ const Card = ({
   title,
   city,
   price,
-  rating
+  rating = 4.9,
 }) => {
-
   const history = useHistory();
 
   return (
@@ -25,20 +24,24 @@ const Card = ({
       <FavoriteBorderIcon className="heart" />
 
       <div className="card_info">
+
         <h4>{city}</h4>
 
         <p>{title}</p>
 
         <div className="card_bottom">
+
           <span className="rating">
-  <StarIcon className="rating_icon" />
-  {rating}
-</span>
+            <StarIcon className="rating_icon" />
+            {rating}
+          </span>
 
           <span>
-            <strong>R{price}</strong>/night
+            <strong>R{price}</strong> / night
           </span>
+
         </div>
+
       </div>
     </div>
   );

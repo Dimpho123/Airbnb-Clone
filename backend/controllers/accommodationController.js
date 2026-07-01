@@ -21,21 +21,21 @@ const getAccommodations = async (req, res) => {
 };
 
 
+// Get single accommodation
 const getAccommodationById = async (req, res) => {
   try {
     const accommodation = await Accommodation.findById(req.params.id);
 
     if (!accommodation) {
       return res.status(404).json({
-        message: "Accommodation not found"
+        message: "Accommodation not found",
       });
     }
 
     res.json(accommodation);
-
   } catch (error) {
     res.status(500).json({
-      message: error.message
+      message: error.message,
     });
   }
 };

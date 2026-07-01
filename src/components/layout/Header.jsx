@@ -21,7 +21,10 @@ const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // Search
+  // ===============================
+  // SEARCH STATE
+  // ===============================
+
   const [location, setLocation] = useState("");
 
   const [checkIn, setCheckIn] = useState(null);
@@ -32,32 +35,63 @@ const Header = () => {
   const [infants, setInfants] = useState(0);
   const [pets, setPets] = useState(0);
 
-  // Popups
+  // ===============================
+  // POPUPS
+  // ===============================
+
   const [showLocation, setShowLocation] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [showGuests, setShowGuests] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  // Refs
+  // ===============================
+  // REFS
+  // ===============================
+
   const locationRef = useRef(null);
   const calendarRef = useRef(null);
   const guestRef = useRef(null);
   const menuRef = useRef(null);
 
-  // Redux
+  // ===============================
+  // REDUX
+  // ===============================
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const listingList = useSelector((state) => state.listingList);
-  const { listings = [] } = listingList;
 
-  const cities = [...new Set(listings.map((item) => item.city))];
+  const {
+    listings = [],
+    loading,
+    error,
+  } = listingList;
+
+  // ===============================
+  // LOAD LISTINGS
+  // ===============================
 
   useEffect(() => {
     dispatch(listListing());
   }, [dispatch]);
 
-  // Close popups when clicking outside
+  // ===============================
+  // UNIQUE CITIES
+  // ===============================
+
+  const cities = [
+    ...new Set(
+      listings
+        .filter((item) => item.city)
+        .map((item) => item.city)
+    ),
+  ];
+
+  // ===============================
+  // CLOSE POPUPS WHEN CLICKING OUTSIDE
+  // ===============================
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -101,6 +135,10 @@ const Header = () => {
       );
   }, []);
 
+  // ===============================
+  // LOGIN / LOGOUT
+  // ===============================
+
   const openModalHandle = () => {
     dispatch(openModal("open", "login"));
   };
@@ -113,6 +151,10 @@ const Header = () => {
     dispatch(logout());
   };
 
+  // ===============================
+  // SEARCH
+  // ===============================
+
   const searchHandler = () => {
     history.push(
       `/search?location=${location}&checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}&children=${children}&infants=${infants}&pets=${pets}`
@@ -123,22 +165,19 @@ const Header = () => {
     <div className="header">
 
   {/* LOGO */}
-
   <img
+    className="header_logo"
     src="https://s.yimg.com/zb/imgv1/26347c9d-9458-3369-b5a8-d946c1771358/t_500x300"
     alt="Airbnb"
-    className="header_logo"
     onClick={() => history.push("/")}
   />
 
-  {/* SEARCH */}
-
+  {/* SEARCH BAR */}
   <div className="home_search">
 
     <div className="search_box">
 
-      {/* WHERE */}
-
+      {/* LOCATION */}
       <div
         className="search-item"
         ref={locationRef}
@@ -148,42 +187,46 @@ const Header = () => {
           setShowGuests(false);
         }}
       >
-
         <h4>Where</h4>
 
-        <p>
-          {location || "Search destinations"}
-        </p>
+        <p>{location || "Search destinations"}</p>
 
         {showLocation && (
-
           <div className="popup">
 
-            {cities.map((city) => (
-
-              <div
-                key={city}
-                className="popup-item"
-                onClick={() => {
-                  setLocation(city);
-                  setShowLocation(false);
-                }}
-              >
-
-               {city}
-
+            {loading ? (
+              <div className="popup-item">
+                Loading...
               </div>
-
-            ))}
+            ) : error ? (
+              <div className="popup-item">
+                Failed to load locations
+              </div>
+            ) : cities.length > 0 ? (
+              cities.map((city) => (
+                <div
+                  key={city}
+                  className="popup-item"
+                  onClick={() => {
+                    setLocation(city);
+                    setShowLocation(false);
+                  }}
+                >
+                  {city}
+                </div>
+              ))
+            ) : (
+              <div className="popup-item">
+                No locations available
+              </div>
+            )}
 
           </div>
-
         )}
 
       </div>
 
-      {/* WHEN */}
-
+      {/* DATES */}
       <div
         className="search-item"
         ref={calendarRef}
@@ -197,15 +240,12 @@ const Header = () => {
         <h4>When</h4>
 
         <p>
-
           {checkIn && checkOut
             ? `${checkIn.toLocaleDateString()} - ${checkOut.toLocaleDateString()}`
             : "Add dates"}
-
         </p>
 
         {showCalendar && (
-
           <div className="popup">
 
             <DatePicker
@@ -228,13 +268,11 @@ const Header = () => {
             />
 
           </div>
-
         )}
 
       </div>
 
       {/* GUESTS */}
-
       <div
         className="search-item"
         ref={guestRef}
@@ -248,13 +286,10 @@ const Header = () => {
         <h4>Guests</h4>
 
         <p>
-
           {adults + children} Guest
-          {adults + children > 1 ? "s" : ""}
-
+          {adults + children !== 1 ? "s" : ""}
           {pets > 0 &&
             ` • ${pets} Pet${pets > 1 ? "s" : ""}`}
-
         </p>
 
         {showGuests && (
@@ -293,14 +328,11 @@ const Header = () => {
       </div>
 
       {/* SEARCH BUTTON */}
-
       <button
         className="search_btn"
         onClick={searchHandler}
       >
-
         <SearchIcon />
-
       </button>
 
     </div>
@@ -308,59 +340,77 @@ const Header = () => {
   </div>
 
   {/* RIGHT SIDE */}
-
   <div className="header_right">
 
     <p>Become a host</p>
 
     <LanguageIcon />
 
-    <div className="dropdown">
+    <div
+      className="dropdown"
+      ref={menuRef}
+    >
 
-  <div
-    className="dropdown-toggle"
-    onClick={() => setShowMenu(!showMenu)}
-  >
-    <ExpandMoreIcon className="dropbtn" />
-    <Avatar />
-  </div>
+      <div
+        className="dropdown-toggle"
+        onClick={() =>
+          setShowMenu(!showMenu)
+        }
+      >
 
-  {showMenu && (
-    <div className="dropdown-content">
+        <ExpandMoreIcon />
 
-      {userInfo ? (
-        <>
-          <span>
-            Welcome, {userInfo?.user?.name || userInfo?.name}
-          </span>
+        <Avatar />
 
-          <span onClick={logoutHandler}>
-            Log out
-          </span>
-        </>
-      ) : (
-        <>
-          <span onClick={openRegisterModal}>
-            Sign up
-          </span>
+      </div>
 
-          <span onClick={openModalHandle}>
-            Log in
-          </span>
-        </>
+      {showMenu && (
+        <div className="dropdown-content">
+
+          {userInfo ? (
+            <>
+              <span>
+                Welcome,{" "}
+                {userInfo?.user?.name ||
+                  userInfo?.name}
+              </span>
+
+              <span
+                onClick={logoutHandler}
+              >
+                Log out
+              </span>
+            </>
+          ) : (
+            <>
+              <span
+                onClick={openRegisterModal}
+              >
+                Sign up
+              </span>
+
+              <span
+                onClick={openModalHandle}
+              >
+                Log in
+              </span>
+            </>
+          )}
+
+          <span>Help</span>
+
+        </div>
       )}
 
-      <span>Help</span>
-
     </div>
-  )}
 
-</div>
+  </div>
 
-</div>
-
-</div>
-);
+  </div>
+  );
 };
 
 export default Header;
+
+
+  

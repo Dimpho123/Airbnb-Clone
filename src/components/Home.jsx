@@ -1,50 +1,53 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Card from "./Card";
-import { useDispatch, useSelector } from "react-redux";
-import { listListing } from "../actions/listingActions";
+import { getAccommodations } from "../api/accommodationApi";
 
 const Home = () => {
-  const dispatch = useDispatch();
-
-  const listingList = useSelector((state) => state.listingList);
-  const { loading, error, listings } = listingList;
+  const [listings, setListings] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(listListing());
-  }, [dispatch]);
+    const fetchListings = async () => {
+      try {
+        const data = await getAccommodations();
+        setListings(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchListings();
+  }, []);
+
+  if (loading) {
+    return <h2>Loading accommodations...</h2>;
+  }
 
   return (
     <div className="home">
 
-      
-
-      {/* Popular Places */}
       <div className="location_section">
         <h2>Inspiration for your next trip</h2>
 
-        {loading ? (
-          <h2>Loading...</h2>
-        ) : error ? (
-          <h3>{error}</h3>
-        ) : (
-          <div className="home_section">
-            {listings.map((listing) => (
-              <Card
-                key={listing.id}
-                id={listing.id}
-                src={listing.img}
-                title={listing.title}
-                description={listing.description}
-                price={listing.price}
-              />
-            ))}
-          </div>
-        )}
+        <div className="home_section">
+          {listings.map((listing) => (
+            <Card
+    key={listing._id}
+    id={listing._id}
+    src={listing.img}
+    title={listing.title}
+    city={listing.city}
+    price={listing.price}
+    rating={listing.rating}
+/>
+          ))}
+        </div>
       </div>
 
-      {/* Static Locations */}
-      <div className="location_section">
+     <div className="location_section">
         <h2>Things to do on your trip</h2>
 
         <div className="home_section">

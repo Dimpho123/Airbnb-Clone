@@ -56,16 +56,16 @@ useEffect(() => {
     {filteredListings &&
   filteredListings.map((listing) => (
         <SearchResult
-          key={listing.id}
-          id={listing.id}
-          img={listing.img}
-          location={`${listing.city}, ${listing.street}`}
-          title={listing.title}
-          description={listing.description}
-          price={`R${listing.price}/night`}
-          total={`R${listing.price * 5} total`}
-          star={4.8}
-        />
+  key={listing._id}
+  id={listing._id}
+  img={listing.img}
+  location={`${listing.city}, ${listing.street}`}
+  title={listing.title}
+  description={listing.description}
+  price={`R${listing.price}/night`}
+  total={`R${listing.price * 5} total`}
+  star={4.8}
+/>
       ))}
   </div>
 );

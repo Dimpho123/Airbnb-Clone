@@ -2,20 +2,19 @@ import {
   LISTING_LIST_REQUEST,
   LISTING_LIST_SUCCESS,
   LISTING_LIST_FAIL,
-} from '../types/listingTypes';
-import axios from 'axios';
+} from "../types/listingTypes";
+
+import axios from "axios";
 
 export const listListing = () => async (dispatch) => {
   try {
-    dispatch({ type: LISTING_LIST_REQUEST });
-
-    console.log("Making request...");
+    dispatch({
+      type: LISTING_LIST_REQUEST,
+    });
 
     const { data } = await axios.get(
-      "http://localhost:5000/listings"
+      "http://localhost:5000/api/accommodations"
     );
-
-    console.log("Data received:", data);
 
     dispatch({
       type: LISTING_LIST_SUCCESS,
@@ -23,13 +22,15 @@ export const listListing = () => async (dispatch) => {
     });
 
   } catch (error) {
-    console.log("FULL ERROR:", error);
-    console.log("ERROR MESSAGE:", error.message);
-    console.log("ERROR RESPONSE:", error.response);
 
     dispatch({
       type: LISTING_LIST_FAIL,
-      payload: error.message,
+      payload:
+        error.response &&
+        error.response.data.message
+          ? error.response.data.message
+          : error.message,
     });
+
   }
 };
