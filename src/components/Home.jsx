@@ -21,7 +21,7 @@ const Home = () => {
 
       {/* Popular Places */}
       <div className="location_section">
-        <h2>Popular Destinations</h2>
+        <h2>Inspiration for your next trip</h2>
 
         {loading ? (
           <h2>Loading...</h2>
@@ -45,7 +45,7 @@ const Home = () => {
 
       {/* Static Locations */}
       <div className="location_section">
-        <h2>Explore The World</h2>
+        <h2>Things to do on your trip</h2>
 
         <div className="home_section">
 

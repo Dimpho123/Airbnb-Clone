@@ -19,12 +19,8 @@ const { userInfo } = userLogin;
         <Route path='/' exact>
         <Home />
         </Route>
-        <Route path="/search">
-  {userInfo ? (
-    <SearchPage />
-  ) : (
-    <h2>Please login first</h2>
-  )}
+     <Route path="/search">
+  <SearchPage />
 </Route>
         <Route path="/listing/:id">
   <ListingScreen />

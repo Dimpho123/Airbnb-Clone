@@ -170,7 +170,7 @@ const Header = () => {
                 }}
               >
 
-                📍 {city}
+               {city}
 
               </div>
 

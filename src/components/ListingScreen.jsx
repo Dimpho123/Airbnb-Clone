@@ -39,7 +39,7 @@ const [guests, setGuests] = useState(1);
     (state) => state.listingList
   );
 
-  const { listings } = listingList
+  const { listings = [] } = listingList;
 
   const bookHandler = () => {
     if (!userInfo) {
