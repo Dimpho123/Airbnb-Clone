@@ -8,16 +8,16 @@ const {
   deleteAccommodation,
 } = require("../controllers/accommodationController");
 
-// GET all
+
 router.get("/", getAccommodations);
 
-// GET one
+
 router.get("/:id", getAccommodationById);
 
-// POST
+
 router.post("/", createAccommodation);
 
-// DELETE
+
 router.delete("/:id", deleteAccommodation);
 
 module.exports = router;

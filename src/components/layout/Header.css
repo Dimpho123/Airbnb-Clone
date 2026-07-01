@@ -1,6 +1,6 @@
-/* ==========================
+/* 
    HEADER
-========================== */
+*/
 
 .header {
   display: flex;
@@ -21,9 +21,9 @@
   cursor: pointer;
 }
 
-/* ==========================
+/* 
    SEARCH BAR
-========================== */
+ */
 
 .home_search {
   flex: 1;
@@ -71,9 +71,9 @@
   font-size: 14px;
 }
 
-/* ==========================
+/* 
    SEARCH BUTTON
-========================== */
+ */
 
 .search_btn {
   width: 48px;
@@ -99,9 +99,9 @@
   font-size: 22px;
 }
 
-/* ==========================
+/* 
    POPUPS
-========================== */
+ */
 
 .popup {
   position: absolute;
@@ -126,9 +126,9 @@
   background: #f7f7f7;
 }
 
-/* ==========================
+/* 
    GUEST COUNTER
-========================== */
+*/
 
 .guest-popup {
   width: 340px;
@@ -171,9 +171,9 @@
   text-align: center;
 }
 
-/* ==========================
+/* 
    DATE PICKER
-========================== */
+*/
 
 .react-datepicker {
   border: none !important;
@@ -193,9 +193,9 @@
   background: #ffe5eb !important;
 }
 
-/* ==========================
+/* 
    RIGHT SIDE
-========================== */
+*/
 
 .header_right {
   display: flex;
@@ -226,9 +226,9 @@
   cursor: pointer;
 }
 
-/* ==========================
+/* 
    DROPDOWN
-========================== */
+*/
 
 .dropdown {
   position: relative;
@@ -266,9 +266,9 @@
   display: block;
 }
 
-/* ==========================
+/* 
    RESPONSIVE
-========================== */
+ */
 
 @media(max-width:1100px){
 

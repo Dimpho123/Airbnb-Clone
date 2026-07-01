@@ -29,7 +29,7 @@ const Footer = () => {
       </div>
 
       <div className="footer_bottom">
-        <p>© 2026 Airbnb Clone by Dimpho. For educational purposes only.</p>
+        <p>© 2026 Airbnb Clone by Dimpho.</p>
         <p>Privacy · Terms · Sitemap · Company Details</p>
       </div>
     </div>

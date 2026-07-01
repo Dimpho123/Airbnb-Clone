@@ -23,3 +23,96 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
 }
+
+
+
+.gift_section{
+    max-width:1200px;
+    margin:60px auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:50px;
+    padding:40px;
+    background:#f7f7f7;
+    border-radius:20px;
+}
+
+.gift_content{
+    flex:1;
+}
+
+.gift_content h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.gift_content p{
+    font-size:18px;
+    color:#555;
+    margin-bottom:25px;
+}
+
+.gift_btn{
+    background:black;
+    color:white;
+    border:none;
+    padding:14px 28px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+.gift_btn:hover{
+    background:#333;
+}
+
+.gift_image{
+    flex:1;
+}
+
+.gift_image img{
+    width:100%;
+    border-radius:15px;
+    object-fit:cover;
+}
+
+
+
+
+.future_section{
+    max-width:1200px;
+    margin:70px auto;
+}
+
+.future_section h2{
+    margin-bottom:30px;
+}
+
+.future_grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.future_card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.future_card:hover{
+    transform:translateY(-5px);
+}
+
+.future_card h3{
+    margin-bottom:10px;
+}
+
+.future_card p{
+    color:#777;
+    font-size:14px;
+}

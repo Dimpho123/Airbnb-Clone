@@ -1,6 +1,5 @@
-/* ===========================
-   LISTING SCREEN
-=========================== */
+/* 
+   LISTING SCREE */
 
 .listing {
   max-width: 1280px;
@@ -29,9 +28,8 @@
   font-size: 18px !important;
 }
 
-/* ===========================
-   IMAGE GALLERY
-=========================== */
+/* 
+IMAGE GALLERYF */
 
 .gallery {
   display: grid;
@@ -67,9 +65,8 @@
   border-radius: 0 0 18px 0;
 }
 
-/* ===========================
-   CONTENT
-=========================== */
+/* 
+   CONTENT */
 
 .listing_content {
   display: grid;
@@ -93,9 +90,9 @@
   border-top: 1px solid #ececec;
 }
 
-/* ===========================
-   FEATURES
-=========================== */
+/* 
+   FEATURAS
+ */
 
 .feature {
   margin-bottom: 30px;
@@ -115,9 +112,9 @@
   font-size: 17px;
 }
 
-/* ===========================
+/* 
    AMENITIES
-=========================== */
+ */
 
 .amenities {
   margin-top: 45px;
@@ -136,9 +133,8 @@
   font-size: 17px;
 }
 
-/* ===========================
-   BOOKING CARD
-=========================== */
+/* 
+BOOKING CARD */
 
 .booking_card {
   position: sticky;
@@ -162,9 +158,9 @@
   font-weight: 400;
 }
 
-/* ===========================
+/* 
    DATE BOX
-=========================== */
+*/
 
 .booking_dates {
   display: grid;
@@ -192,9 +188,9 @@
   letter-spacing: .5px;
 }
 
-/* ===========================
-   REACT DATE PICKER
-=========================== */
+/* 
+DATE PICKER
+ */
 
 .react-datepicker-wrapper {
   width: 100%;
@@ -233,9 +229,9 @@
   background: #ffe5ec;
 }
 
-/* ===========================
+/*
    GUEST BOX
-=========================== */
+*/
 
 .guest_box {
   border: 1px solid #bbb;
@@ -259,9 +255,9 @@
   background: transparent;
 }
 
-/* ===========================
+/* 
    BUTTON
-=========================== */
+ */
 
 .reserve_btn {
   width: 100%;
@@ -287,9 +283,9 @@
   font-size: 14px;
 }
 
-/* ===========================
+/* 
    PRICE DETAILS
-=========================== */
+*/
 
 .price_row {
   display: flex;
@@ -306,9 +302,9 @@
   font-weight: bold;
 }
 
-/* ===========================
+/* 
    MOBILE
-=========================== */
+ */
 
 @media (max-width:1000px) {
 

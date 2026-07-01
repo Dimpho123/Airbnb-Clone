@@ -21,9 +21,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // ===============================
-  // SEARCH STATE
-  // ===============================
+
 
   const [location, setLocation] = useState("");
 
@@ -35,27 +33,21 @@ const Header = () => {
   const [infants, setInfants] = useState(0);
   const [pets, setPets] = useState(0);
 
-  // ===============================
-  // POPUPS
-  // ===============================
+ 
 
   const [showLocation, setShowLocation] = useState(false);
   const [showCalendar, setShowCalendar] = useState(false);
   const [showGuests, setShowGuests] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  // ===============================
-  // REFS
-  // ===============================
+
 
   const locationRef = useRef(null);
   const calendarRef = useRef(null);
   const guestRef = useRef(null);
   const menuRef = useRef(null);
 
-  // ===============================
-  // REDUX
-  // ===============================
+  
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -68,17 +60,13 @@ const Header = () => {
     error,
   } = listingList;
 
-  // ===============================
-  // LOAD LISTINGS
-  // ===============================
+ 
 
   useEffect(() => {
     dispatch(listListing());
   }, [dispatch]);
 
-  // ===============================
-  // UNIQUE CITIES
-  // ===============================
+ 
 
   const cities = [
     ...new Set(
@@ -88,9 +76,7 @@ const Header = () => {
     ),
   ];
 
-  // ===============================
-  // CLOSE POPUPS WHEN CLICKING OUTSIDE
-  // ===============================
+ 
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -151,9 +137,7 @@ const Header = () => {
     dispatch(logout());
   };
 
-  // ===============================
-  // SEARCH
-  // ===============================
+  
 
   const searchHandler = () => {
     history.push(

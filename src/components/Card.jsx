@@ -32,12 +32,13 @@ const Card = ({
         <div className="card_bottom">
 
           <span className="rating">
-            <StarIcon className="rating_icon" />
-            {rating}
-          </span>
+  {[...Array(Math.floor(rating))].map((_, index) => (
+    <StarIcon key={index} className="rating_icon" />
+  ))}
+</span>
 
           <span>
-            <strong>R{price}</strong> / night
+            <strong>R{price}</strong>
           </span>
 
         </div>

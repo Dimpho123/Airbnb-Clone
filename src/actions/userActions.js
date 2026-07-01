@@ -25,8 +25,8 @@ export const register = (name, email, password) => async (dispatch) => {
             },
         };
 
-        const { data } = await axios.post(
-  "http://localhost:5000/register",
+       const { data } = await axios.post(
+  "http://localhost:5000/api/users/register",
   {
     name,
     email,
@@ -69,10 +69,11 @@ const config = {
 };
 
 const { data } = await axios.post(
-    "http://localhost:5000/login",
+    "http://localhost:5000/api/users/login",
     { email, password },
     config
 );
+
  localStorage.setItem("userInfo", JSON.stringify(data));
 
  dispatch({ type: USER_LOGIN_SUCCESS, payload: data })

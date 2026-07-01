@@ -127,9 +127,9 @@ const ListingScreen = () => {
         </div>
 
         <div className="gallery_small">
-          <img src={listing.img} alt="" />
-          <img src={listing.img} alt="" />
-          <img src={listing.img} alt="" />
+          <img src="https://tse4.mm.bing.net/th/id/OIP.H_UHj0z9Dv0cnkoiVmGsbwHaE8?pid=Api&h=220&P=0" alt="" />
+          <img src="https://tse4.mm.bing.net/th/id/OIP.O3re6BxV1u0iPTap3lmM0QHaE8?pid=Api&h=220&P=0" alt="" />
+          <img src="https://tse1.mm.bing.net/th/id/OIP.Fck-eXD-lC8b2CWlMBOniwHaKx?pid=Api&h=220&P=0" alt="" />
           <img src={listing.img} alt="" />
         </div>
 
@@ -142,7 +142,7 @@ const ListingScreen = () => {
         <div className="listing_left">
 
           <h2>
-            Entire apartment hosted by Airbnb Host
+            Entire apartment hosted by Dimpho lebotsa
           </h2>
 
           <p>
